@@ -1,4 +1,11 @@
+PATH
+  remote: .
+  specs:
+    zoho_books (0.0.3)
+      httparty (>= 0.18.0)
+
 GEM
+  remote: https://rubygems.org/
   specs:
     httparty (0.21.0)
       mini_mime (>= 1.0.0)
@@ -10,7 +17,7 @@ PLATFORMS
   arm64-darwin-21
 
 DEPENDENCIES
-  httparty
+  zoho_books!
 
 BUNDLED WITH
-   2.3.7
+   2.4.13
