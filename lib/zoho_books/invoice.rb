@@ -1,15 +1,12 @@
 # frozen_string_literal: true
 
 class ZohoBooks::Invoice
-  BASE_URL = 'https://books.zoho.eu/api/v3/invoices'
-
-
   class << self
     @id = id
   end
 
   def self.list(access_token:,  **args)
-    response = HTTParty.get("#{BASE_URL}?#{query(args)}",headers: {
+    response = HTTParty.get("#{ENV['ZOHO_BASE_URL']}/api/v3/invoices?#{query(args)}",headers: {
       'Authorization' => "Zoho-oauthtoken #{access_token}"
     })
 
