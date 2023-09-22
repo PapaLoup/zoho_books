@@ -1,15 +1,20 @@
 # frozen_string_literal: true
 require 'httparty'
+require 'zoho_books/error'
+require 'zoho_books/config'
 
-class ZohoBooks::Auth
-  def self.refresh_access_token
-    response = HTTParty.post("#{ENV['ZOHO_BASE_URL']}/oauth/v2/token?refresh_token="\
-                               "#{ENV['ZOHO_REFRESH_TOKEN']}&client_id=#{ENV['ZOHO_CLIENT_ID']}&client_secret="\
-                               "#{ENV['ZOHO_CLIENT_SECRET']}&redirect_urrefresh_access_tokeni=#{ENV['ZOHO_REDIRECT_URI']}"\
-                               '&grant_type=refresh_token')
+module ZohoBooks
+  class Auth
+    def self.refresh_access_token
+      endoint_url = "oauth/v2/token?refresh_token=#{ZohoBooks.config.refresh_token}&client_id=#{ZohoBooks.config.client_id}&client_secret=#{ZohoBooks.config.client_secret}&redirect_uri=#{ZohoBooks.config.redirect_uri}&grant_type=refresh_token"
+      response = HTTParty.post("#{ZohoBooks.config.base_url}/#{endoint_url}")
 
-    return ZohoBooks::Error.new(response.code, response["error"]) if response.code != 200
+      return ZohoBooks::Error.new(response.code, response["error"]) if response.code != 200
 
-    response.parsed_response['access_token']
+      ZohoBooks.config.access_token = response.parsed_response['access_token']
+      ZohoBooks.config.access_token_expires_at = Time.now.to_i + response.parsed_response['expires_in'].to_i
+
+      response.parsed_response['access_token']
+    end
   end
 end

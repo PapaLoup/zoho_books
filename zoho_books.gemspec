@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.description = "A simple hello world gem"
   s.authors     = ["PapaLoup", "Raphtml"]
   s.email       = "nick@quaran.to"
-  s.files       = %w[lib/zoho_books.rb lib/zoho_books/auth.rb lib/zoho_books/error.rb lib/zoho_books/invoice.rb]
+  s.files       = %w[lib/zoho_books.rb lib/zoho_books/auth.rb lib/zoho_books/error.rb]
   s.homepage    =
     "https://rubygems.org/gems/zoho_books"
   s.license       = "MIT"
