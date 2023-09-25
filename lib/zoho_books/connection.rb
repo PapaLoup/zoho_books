@@ -15,7 +15,7 @@ module ZohoBooks
     def self.post(url, body)
       response = HTTParty.post(url, body: body, headers: headers)
 
-      return ZohoBooks::Error.new(response.code, response["error"]) if response.code != 201
+      return render_error(response) if response.code != 201
 
       response
     end
@@ -23,7 +23,7 @@ module ZohoBooks
     def self.put(url, body)
       response = HTTParty.put(url, body: body, headers: headers)
 
-      return ZohoBooks::Error.new(response.code, response["error"]) if response.code != 200
+      return render_error(response) if response.code != 200
 
       response
     end
@@ -31,7 +31,7 @@ module ZohoBooks
     def self.delete(url)
       response = HTTParty.delete(url, headers: headers)
 
-      return ZohoBooks::Error.new(response.code, response["error"]) if response.code != 200
+      return render_error(response) if response.code != 200
 
       response
     end
@@ -51,6 +51,10 @@ module ZohoBooks
       else
         ZohoBooks.config.access_token
       end
+    end
+
+    def self.render_error(response)
+      ZohoBooks::Error.new(response.code, response["error"] || '')
     end
   end
 end
