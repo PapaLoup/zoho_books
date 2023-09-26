@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 require 'httparty'
-require 'zoho_books/error'
-require 'zoho_books/config'
 
 module ZohoBooks
   class Auth

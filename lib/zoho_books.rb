@@ -1,9 +1,9 @@
 module ZohoBooks
 end
 
-require_relative 'zoho_books/auth'
-require_relative 'zoho_books/error'
-require_relative 'zoho_books/connection'
-require_relative 'zoho_books/item'
-require_relative 'zoho_books/config'
+require 'zoho_books/auth'
+require 'zoho_books/error'
+require 'zoho_books/connection'
+require 'zoho_books/item'
+require 'zoho_books/config'
 
