@@ -1,9 +1,9 @@
 Gem::Specification.new do |s|
   s.name        = "zoho_books"
-  s.version     = "0.0.46"
+  s.version     = "0.0.5"
   s.summary     = "Zoho Books API wrapper"
   s.description = "A simple hello world gem"
-  s.authors     = ["PapaLoup", "Raphtml"]
+  s.authors     = ["PapaLoup", "Raphtml", "theobcl"]
   s.email       = "nick@quaran.to"
   s.files       = %w[lib/zoho_books.rb]
   s.files += Dir["lib/**/*.rb"]
