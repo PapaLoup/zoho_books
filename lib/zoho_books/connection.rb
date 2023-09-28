@@ -46,7 +46,7 @@ module ZohoBooks
     end
 
     def self.access_token
-      if ZohoBooks.config.access_token_expires_at.nil? || ZohoBooks.config.access_token_expires_at >= Time.now.to_i
+      if ZohoBooks.config.access_token_expires_at.nil? || ZohoBooks.config.access_token_expires_at < Time.now.to_i
         ZohoBooks::Auth.refresh_access_token
       else
         ZohoBooks.config.access_token
@@ -54,7 +54,7 @@ module ZohoBooks
     end
 
     def self.render_error(response)
-      ZohoBooks::Error.new(response.code, response["error"] || '')
+      ZohoBooks::Error.new(response.code, response["message"] || '')
     end
   end
 end

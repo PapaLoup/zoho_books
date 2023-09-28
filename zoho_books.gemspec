@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "zoho_books"
-  s.version     = "0.0.45"
+  s.version     = "0.0.46"
   s.summary     = "Zoho Books API wrapper"
   s.description = "A simple hello world gem"
   s.authors     = ["PapaLoup", "Raphtml"]
