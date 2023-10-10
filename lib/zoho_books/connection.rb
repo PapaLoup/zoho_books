@@ -2,6 +2,8 @@
 require 'httparty'
 
 module ZohoBooks
+  BASE_URL='https://www.zohoapis.eu/books/v3'
+
   class Connection
 
     def self.get(url)
