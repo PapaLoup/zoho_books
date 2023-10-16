@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ZohoBooks
 end
 
@@ -10,3 +12,4 @@ require 'zoho_books/contact'
 require 'zoho_books/estimate'
 require 'zoho_books/estimates/template'
 require 'zoho_books/tax'
+require 'zoho_books/invoice'
