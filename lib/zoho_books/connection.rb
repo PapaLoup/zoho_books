@@ -1,21 +1,21 @@
 # frozen_string_literal: true
+
 require 'httparty'
 
 module ZohoBooks
-  BASE_URL='https://www.zohoapis.eu/books/v3'
+  BASE_URL = 'https://www.zohoapis.eu/books/v3'
 
   class Connection
-
     def self.get(url)
-      response = HTTParty.get(url, headers: headers)
+      response = HTTParty.get(url, headers:)
 
-      return ZohoBooks::Error.new(response.code, response["error"]) if response.code != 200
+      return ZohoBooks::Error.new(response.code, response['error']) if response.code != 200
 
       response
     end
 
     def self.post(url, body)
-      response = HTTParty.post(url, body: body, headers: headers)
+      response = HTTParty.post(url, body:, headers:)
 
       return render_error(response) if response.code != 201
 
@@ -23,7 +23,7 @@ module ZohoBooks
     end
 
     def self.put(url, body)
-      response = HTTParty.put(url, body: body, headers: headers)
+      response = HTTParty.put(url, body:, headers:)
 
       return render_error(response) if response.code != 200
 
@@ -31,14 +31,12 @@ module ZohoBooks
     end
 
     def self.delete(url)
-      response = HTTParty.delete(url, headers: headers)
+      response = HTTParty.delete(url, headers:)
 
       return render_error(response) if response.code != 200
 
       response
     end
-
-    private
 
     def self.headers
       {
@@ -56,7 +54,7 @@ module ZohoBooks
     end
 
     def self.render_error(response)
-      ZohoBooks::Error.new(response.code, response["message"] || '')
+      ZohoBooks::Error.new(response.code, response['message'] || '')
     end
   end
 end
