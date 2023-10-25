@@ -10,7 +10,8 @@ module ZohoBooks
     end
 
     def self.get(id, _opts = {})
-      ZohoBooks::Connection.get("#{BASE_URL}/invoices/#{id}?organization_id=#{ZohoBooks.config.organization_id}")
+      query = _opts.map { |k, v| "#{k}=#{v}" }.join('&')
+      ZohoBooks::Connection.get("#{BASE_URL}/invoices/#{id}?organization_id=#{ZohoBooks.config.organization_id}&#{query}")
     end
 
     def self.create(body, _opts = {})
