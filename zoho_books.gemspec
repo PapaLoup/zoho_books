@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name        = 'zoho_books'
-  s.version     = '0.0.7.3'
+  s.version     = '0.0.7.4'
   s.summary     = 'Zoho Books API wrapper'
   s.description = 'A simple hello world gem'
   s.authors     = %w[PapaLoup Raphtml theobcl]
