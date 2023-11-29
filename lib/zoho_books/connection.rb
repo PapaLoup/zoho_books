@@ -17,7 +17,7 @@ module ZohoBooks
     def self.post(url, body)
       response = HTTParty.post(url, body:, headers:)
 
-      return render_error(response) if response.code != 201
+      return render_error(response) unless [200, 201].include?(response.code)
 
       response
     end
