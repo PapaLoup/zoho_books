@@ -6,8 +6,8 @@ module ZohoBooks
   BASE_URL = 'https://www.zohoapis.eu/books/v3'
 
   class Connection
-    def self.get(url)
-      response = HTTParty.get(url, headers:)
+    def self.get(url, stream_body = false)
+      response = HTTParty.get(url, headers:, stream_body:)
 
       return ZohoBooks::Error.new(response.code, response['error']) if response.code != 200
 
